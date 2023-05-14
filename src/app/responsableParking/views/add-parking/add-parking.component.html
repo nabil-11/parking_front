@@ -1,0 +1,98 @@
+
+<div class="container" *ngIf="step === 0" >
+    <form [formGroup]="parkingDetails" (ngSubmit)="onSubmitStep1()">
+
+        <div class="mb-5">
+            <label for="exampleFormControlInput1" class="required form-label">Parking Name</label>
+            <input type="text" class="form-control form-control-solid" formControlName="parkingName" placeholder="Example input"/>
+            <span *ngIf="parkingDetails.get('parkingName')?.touched && parkingDetails.get('parkingName')?.hasError('required')" class="text-danger mt-2">
+                Name is required.
+            </span> 
+        </div>
+          <div class="mb-5">
+            <label for="exampleFormControlInput1" class="required form-label">Bloc Number</label>
+            <select class="form-select form-select-solid"  formControlName="blocNumber" data-placeholder="Select an option">
+                <option></option>
+                <option value="1"  selected>  1 bloc </option>
+                <option value="2"> 2 blocs</option>
+                <option value="3" > 3 blocs</option>
+                <option value="4"> 4 blocs</option>
+                <option value="5"> 5 blocs</option>
+                <option value="6"> 6 blocs</option>
+                <option value="7"> 7 blocs</option>
+                <option value="8"> 8 blocs</option>
+                <option value="9"> 9 blocs</option>
+                <option value="10"> 10 blocs</option>
+
+            </select> 
+        </div>
+        <div class="mb-10">
+          <label for="exampleFormControlInput1" class="required form-label">Parking Description</label>
+         <textarea type="email" class="form-control form-control-solid" formControlName="description" placeholder="Example input"></textarea> 
+      </div>
+        	<!--begin::Header Section-->
+    
+      <div class="container-fluid py-3">
+          <div  id="map"></div>
+        </div>
+
+  <!--end::Header Section-->
+ 
+
+
+        <div class="d-flex justify-content-end my-3">
+            <button type="submit" class="btn btn-primary"  >Next</button>
+        </div>
+    </form>
+
+
+</div>
+<form [formGroup]="parkingDetails" class="container" *ngIf="step === 1" (ngSubmit)="submitBlocForms()">
+  <div formArrayName="blocsForm">
+    <div class="d-flex flex-column" *ngFor="let bloc of blocsForm.controls; let i = index">
+      <div [formGroupName]="i" class="d-flex justify-content-between align-items-center">
+        <div class="mb-10 me-3 flex-grow-1">
+          <label for="exampleFormControlInput1" class="required form-label">bloc {{ i+1 }} hour price (TND)</label>
+          <input type="number" class="form-control form-control-solid" formControlName="price" placeholder="Example input"/>
+             <div *ngIf="blocsForm.controls[i].get('type')?.invalid && blocsForm.controls[i].get('type')?.touched">
+          <div *ngIf="blocsForm.controls[i].get('type')?.errors?.['required']">Type is required.</div>
+        </div>
+        </div>
+        <div class="mb-10 me-3 flex-grow-1">
+          <label for="exampleFormControlInput1" class="required form-label"> bloc Place Number </label>
+        <select class="form-select form-select-solid" formControlName="place_number"  data-placeholder="Select an option">
+          <option></option>
+          <option value="1" selected>1 </option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+      </select>
+      <div *ngIf="blocsForm.controls[i].get('place_number')?.invalid && blocsForm.controls[i].get('place_number')?.touched">
+        <div *ngIf="blocsForm.controls[i].get('place_number')?.errors?.['required']">Type is required.</div>
+      </div>
+    </div>
+      <div class="mb-10 me-3 flex-grow-1">
+        <label for="exampleFormControlInput1" class="required form-label">bloc Type </label>
+      <select class="form-select form-select-solid" formControlName="type"  data-placeholder="Select an option">
+        <option></option>
+        <option value="1" selected>closed</option>
+        <option value="2">covert</option>
+    </select>
+    <div *ngIf="blocsForm.controls[i].get('type')?.invalid && blocsForm.controls[i].get('type')?.touched">
+      <div *ngIf="blocsForm.controls[i].get('type')?.errors?.['required']">Type is required.</div>
+    </div>
+  </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-light me-5" (click)="handleClickPrev()"  >Prev</button>
+
+      <button type="submit" class="btn btn-primary" [disabled]="blocsForm.invalid" >Confirm</button>
+
+    </div>
+  </div>
+</form>
