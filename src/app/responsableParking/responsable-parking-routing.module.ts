@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'statics', pathMatch: 'full' },
   {path : "statics" , component:StaticsComponent } ,
   {path : "add_parking" , component:AddParkingComponent } ,
-  {path : "parking_list" , component:ListParkingComponent } 
+  {path : "parking_list" , component:ListParkingComponent }  ,
+ 
 
 ]}
 ];

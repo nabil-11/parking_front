@@ -9,13 +9,21 @@ import { ParkingService } from 'src/app/service/parking.service';
 export class ListParkingComponent {
  constructor( private parkingService :ParkingService ){}
  parkings :any[]=[]
+ testParking:any[]=[] ;
 ngOnInit(){
   this.parkingService.getParkingList().subscribe((data: any) => {
     this.parkings = data['data'] 
+ 
   
   }, (err) => {
     console.log(err);
   });
-
+  
+  this.testParking=[
+    {
+      langitude :'26',
+      lantitude :'28',
+    }
+  ];
 }
 }

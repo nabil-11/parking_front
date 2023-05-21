@@ -1,9 +1,174 @@
 	<!--begin::Header Section-->
     <div class="mb-0" id="home">
         <app-header></app-header>
+        <div class="d-flex justify-content-end px-5"> <button class="btn btn-primary btn-sm " id="modalListReservations" ><i class="bi bi-list-nested"></i>reservation List</button></div>
         <div class="container-fluid py-3">
             <div  id="map"></div>
           </div>
     </div>
+    <!-- Button trigger modal -->
+
+
+<!--begin::View component-->
+<div
+    id="kt_drawer_example_advanced"
+
+    class="bg-white"
+    data-kt-drawer="true"
+    data-kt-drawer-activate="true"
+    data-kt-drawer-toggle="#kt_drawer_example_advanced_button"
+    data-kt-drawer-close="#kt_drawer_example_advanced_close"
+    data-kt-drawer-name="docs"
+    data-kt-drawer-overlay="true"
+    data-kt-drawer-width="{default:'300px', 'md': '500px'}"
+    data-kt-drawer-direction="start"
+>
+    ...
+</div>
+<!--end::View component-->
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel"> parking reservation</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+           <span class="fs-3"> <strong>paking Name :</strong> park elissa</span>
+           <div class="container bg-light p-1 border rounded">
+            <p class="text-muted fs-5"> description :</p>
+            <div class="d-flex justify-content-end">
+                <span class="badge badge-light-primary fs-3">Hour(2.TND) </span>
+            </div>
+         
+            <form>
+                
+                 
+                    <div class="mb-3">
+                        <label for="" class="form-label">Select date and time</label>
+                        <input class="form-control  bg-white" placeholder="Pick date & time" id="kt_datepicker_3"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="required form-label">number of hour</label>
+                        <input type="number" min="0" max="72" class="form-control bg-white" placeholder="Example input"/>
+                    </div>
+                   
+                   <p class="fs-4 fw-bold"> payment Type :</p>
+            <div class="d-flex flex-column p-3">
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                       cash
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                       online payment
+                    </label>
+                  </div>
+               </div>
+          <div class="d-flex justify-content-between align-items-center rounded bg-white border p-2 text-primary">
+            <span class="fs-4 fw-bold">total</span>
+            <span class="fs-4 fw-bold" > 200 TND</span>
+          </div>
+               
+            </form>
+           </div>
+           
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="handlereservation()" class="btn btn-primary">confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <!--end::Header Section-->
+    <!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="successModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel"> Success</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="fs-4 text-muted"> Your payment has been processed successfully</p>
+        </div>
+        <div class="modal-footer text-center">
+          
+          <button type="button" class="btn btn-primary" >Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+
+
+<!--begin::View component-->
+<div
+    id="modalListReservations"
+
+    class="bg-white"
+    data-kt-drawer="true"
+    data-kt-drawer-activate="true"
+    data-kt-drawer-toggle="#modalListReservations"
+    data-kt-drawer-close="#kt_drawer_example_dismiss_close"
+    data-kt-drawer-overlay="true"
+    data-kt-drawer-width="{default:'300px', 'md': '500px'}"
+    data-kt-drawer-direction="start"
    
+>
+  <div class="d-flex flex-column p-3">
+    <span class="fs-4 fw-bold text-primary ">list Reservations</span>
+    <hr class="text-primary my-3" >
+    <div class="card mb-3 border rounded p-2" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="https://www.scandit.com/wp-content/uploads/2019/08/Symbology-QR-code.svg" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"> Parking name</h5>
+            <p class="card-text"> hour number :</p>
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalReservationDetails">Details</button>
+            </div>
+           
+            <p class="card-text"><small class="text-muted"> will start 25/04/2023 at 12:00 am</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--end::View component-->
+
+<!-- Modal -->
+<div class="modal fade" id="modalReservationDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> reservation Details </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body py-3 border rounded">
+        <img src="https://www.scandit.com/wp-content/uploads/2019/08/Symbology-QR-code.svg" class="border w-100 p-2" />
+     <p class="my-3 fs-2 fw-bold text-center">Code : 554257</p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
