@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MapComponent } from './components/map/map.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ListParkingComponent } from './views/list-parking/list-parking.component';
+import { AddEmployerComponent } from './views/add-employer/add-employer.component';
 
 
 
@@ -25,7 +26,8 @@ import { ListParkingComponent } from './views/list-parking/list-parking.componen
     DashbordToolbarComponent,
     AddParkingComponent,
     MapComponent,
-    ListParkingComponent
+    ListParkingComponent,
+    AddEmployerComponent
   ],
   imports: [
     CommonModule,

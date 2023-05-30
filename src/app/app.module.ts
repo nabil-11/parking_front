@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SearchParkingComponent } from './general/search-parking/search-parking.component';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { ResponsableParkingModule } from './responsableParking/responsable-parking.module';
+
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     HttpClientModule ,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    LeafletModule
+    LeafletModule ,
+    ResponsableParkingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

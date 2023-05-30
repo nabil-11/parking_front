@@ -26,6 +26,7 @@
     "ngx-toastr": "^16.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "vis": "^4.21.0-EOL",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
@@ -36,6 +37,7 @@
     "@types/jasmine": "~4.3.0",
     "@types/jquery": "^3.5.16",
     "@types/leaflet": "^1.9.3",
+    "@types/vis": "^4.21.24",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

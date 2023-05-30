@@ -9,10 +9,11 @@ import { SearchParkingComponent } from './general/search-parking/search-parking.
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirect to 'home' component
-  { path: 'home',  component: LoadingComponent },
+  { path: 'home',  component: LoadingComponent, pathMatch: 'full' },
   { path: 'login', canActivate:[authGuard], component: LoginComponent },
   { path: 'register', canActivate:[authGuard], component: RegisterComponent },
   { path: 'search',  component: SearchParkingComponent },
+  { path: 'responsable', loadChildren: () => import('./responsableParking/responsable-parking.module').then(m => m.ResponsableParkingModule) }
 ];
 
 @NgModule({

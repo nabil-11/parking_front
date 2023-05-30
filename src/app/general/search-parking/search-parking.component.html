@@ -1,9 +1,78 @@
 	<!--begin::Header Section-->
     <div class="mb-0" id="home">
         <app-header></app-header>
-        <div class="d-flex justify-content-end px-5"> <button class="btn btn-primary btn-sm " id="modalListReservations" ><i class="bi bi-list-nested"></i>reservation List</button></div>
-        <div class="container-fluid py-3">
-            <div  id="map"></div>
+      
+        <div class="w-100">
+            <div  id="map">
+            <!--begin::Main wrapper-->
+<div
+id="kt_docs_search_handler_basic"
+
+data-kt-search-keypress="true"
+data-kt-search-min-length="2"
+data-kt-search-enter="true"
+data-kt-search-layout="inline">
+
+<!--begin::Input Form-->
+<form data-kt-search-element="form" class="w-lg-75 w-50 mx-15 opacity-75  mt-5  position-relative mb-5 z-index-2"
+style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;"
+autocomplete="on">
+    <!--begin::Hidden input(Added to disable form autocomplete)-->
+    <input type="hidden"/>
+    <!--end::Hidden input-->
+
+    <!--begin::Icon-->
+        <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+    <!--end::Icon-->
+
+    <!--begin::Input-->
+    <input type="text" class="form-control form-control-lg form-control-solid px-15"
+        name="search"
+        value=""
+        placeholder="Search by parking name"
+        data-kt-search-element="input"/>
+    <!--end::Input-->
+
+    <!--begin::Spinner-->
+    <span class="position-absolute top-50 end-0 translate-middle-y lh-0 d-none me-5" data-kt-search-element="spinner">
+        <span class="spinner-border h-15px w-15px align-middle text-gray-400"></span>
+    </span>
+    <!--end::Spinner-->
+
+    <!--begin::Reset-->
+    <span class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 me-5 d-none"
+        data-kt-search-element="clear">
+
+        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+    </span>
+    <!--end::Reset-->
+</form>
+<!--end::Form-->
+
+<!--begin::Wrapper-->
+<div class="py-5 ">
+    <!--being::Search suggestion-->
+    <div data-kt-search-element="suggestions">
+        ...
+    </div>
+    <!--end::Suggestion wrapper-->
+
+    <!--begin::Search results-->
+    <div data-kt-search-element="results" class="d-none">
+        ...
+    </div>
+    <!--end::Search results-->
+
+    <!--begin::Empty search-->
+    <div data-kt-search-element="empty" class="text-center d-none">
+        ...
+    </div>
+    <!--end::Empty search-->
+</div>
+<!--end::Wrapper-->
+</div>
+<!--end::Main wrapper-->
+            </div>
           </div>
     </div>
     <!-- Button trigger modal -->
@@ -20,7 +89,7 @@
     data-kt-drawer-close="#kt_drawer_example_advanced_close"
     data-kt-drawer-name="docs"
     data-kt-drawer-overlay="true"
-    data-kt-drawer-width="{default:'300px', 'md': '500px'}"
+    data-kt-drawer-width="{default:'300px', 'md': '500px' }"
     data-kt-drawer-direction="start"
 >
     ...
@@ -28,42 +97,55 @@
 <!--end::View component-->
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl ">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="staticBackdropLabel"> parking reservation</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-           <span class="fs-3"> <strong>paking Name :</strong> park elissa</span>
+           <span class="fs-3"> <strong>paking Name :</strong> {{ parkingSelected?.name }}</span>
            <div class="container bg-light p-1 border rounded">
             <p class="text-muted fs-5"> description :</p>
             <div class="d-flex justify-content-end">
-                <span class="badge badge-light-primary fs-3">Hour(2.TND) </span>
+             
             </div>
          
-            <form>
+            <form [formGroup]="reservationForm" >
+              <div id="kt_docs_vistimeline_basic"></div>
+              <div class="mb-3">
+                <label for=""  class="form-label">Select bloc</label>
+                <select class="form-select" 
+                formControlName="blocId"
+                data-placeholder="Select an option"
+                (ngModelChange)="getTotal()"
                 
+                >
+                  <option *ngFor="let bloc of parkingSelected?.blocs ;  let i = index" value="{{ bloc.id }}">bloc {{ i+1 }}  ({{  bloc.hour_price}} tnd) </option>
+
+              </select>        
+                </div>
+           
                  
                     <div class="mb-3">
                         <label for="" class="form-label">Select date and time</label>
-                        <input class="form-control  bg-white" placeholder="Pick date & time" id="kt_datepicker_3"/>
+                        <input  formControlName="dateTime" (ngModelChange)="getTotal()" class="form-control  bg-white" placeholder="Pick date & time" id="kt_datepicker_3"/>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="required form-label">number of hour</label>
-                        <input type="number" min="0" max="72" class="form-control bg-white" placeholder="Example input"/>
+                        <input type="number" (ngModelChange)="getTotal()" formControlName="numberOfHours" min="0" max="72" class="form-control bg-white" placeholder="Example input"/>
                     </div>
                    
                    <p class="fs-4 fw-bold"> payment Type :</p>
             <div class="d-flex flex-column p-3">
                 <div class="form-check mb-3">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" checked type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                        cash
                     </label>
                   </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                  <div class="form-check  " >
+                    <input class="form-check-input" disabled type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
                     <label class="form-check-label" for="flexRadioDefault2">
                        online payment
                     </label>
@@ -71,18 +153,20 @@
                </div>
           <div class="d-flex justify-content-between align-items-center rounded bg-white border p-2 text-primary">
             <span class="fs-4 fw-bold">total</span>
-            <span class="fs-4 fw-bold" > 200 TND</span>
+            <span class="fs-4 fw-bold" > {{ total }} TND</span>
           </div>
-               
+      
+      <div class="d-flex justify-content-end">
+        <button type="submit" [disabled]="reservationForm.invalid" (click)="handlereservation()" class="btn btn-primary my-3">confirm</button>
+
+      </div>
+
             </form>
            </div>
            
          
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" (click)="handlereservation()" class="btn btn-primary">confirm</button>
-        </div>
+
       </div>
     </div>
   </div>
@@ -113,62 +197,3 @@
   
 
 
-<!--begin::View component-->
-<div
-    id="modalListReservations"
-
-    class="bg-white"
-    data-kt-drawer="true"
-    data-kt-drawer-activate="true"
-    data-kt-drawer-toggle="#modalListReservations"
-    data-kt-drawer-close="#kt_drawer_example_dismiss_close"
-    data-kt-drawer-overlay="true"
-    data-kt-drawer-width="{default:'300px', 'md': '500px'}"
-    data-kt-drawer-direction="start"
-   
->
-  <div class="d-flex flex-column p-3">
-    <span class="fs-4 fw-bold text-primary ">list Reservations</span>
-    <hr class="text-primary my-3" >
-    <div class="card mb-3 border rounded p-2" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <img src="https://www.scandit.com/wp-content/uploads/2019/08/Symbology-QR-code.svg" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title"> Parking name</h5>
-            <p class="card-text"> hour number :</p>
-            <div class="d-flex justify-content-end">
-              <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalReservationDetails">Details</button>
-            </div>
-           
-            <p class="card-text"><small class="text-muted"> will start 25/04/2023 at 12:00 am</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-<!--end::View component-->
-
-<!-- Modal -->
-<div class="modal fade" id="modalReservationDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel"> reservation Details </h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body py-3 border rounded">
-        <img src="https://www.scandit.com/wp-content/uploads/2019/08/Symbology-QR-code.svg" class="border w-100 p-2" />
-     <p class="my-3 fs-2 fw-bold text-center">Code : 554257</p>
-      </div>
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        
-      </div>
-    </div>
-  </div>
-</div>

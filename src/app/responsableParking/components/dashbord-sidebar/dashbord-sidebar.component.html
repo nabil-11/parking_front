@@ -3,7 +3,7 @@
     <!--begin::Brand-->
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="../../demo1/dist/index.html">
+        <a  (click)="goToHome()">
             <img alt="Logo" src="assets/media/logos/easyParking.png" class="h-25px logo" />
         </a>
         <!--end::Logo-->
@@ -42,7 +42,7 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Gestion Parking</span>
+                        <span class="menu-title">manage Parking</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
@@ -51,7 +51,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title"> liste  parking</span>
+                                <span class="menu-title"> list  parking</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -59,7 +59,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">ajouter parking</span>
+                                <span class="menu-title">add parking</span>
                             </a>
                         </div>
                  
@@ -77,24 +77,17 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Gestion Employeur</span>
+                        <span class="menu-title">manage Employer</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
+                   
                         <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/account/overview.html">
+                            <a class="menu-link"  routerLink="add_employer">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title"> liste des employeures</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/account/settings.html">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">ajouter employeur</span>
+                                <span class="menu-title">employers</span>
                             </a>
                         </div>
                  

@@ -5,6 +5,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { AddParkingComponent } from './views/add-parking/add-parking.component';
 import { ResponsableGuard } from '../guards/responsable.guard';
 import { ListParkingComponent } from './views/list-parking/list-parking.component';
+import { AddEmployerComponent } from './views/add-employer/add-employer.component';
 
 const routes: Routes = [
  {path:"responsable" ,  component:LayoutComponent,children:[
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path : "statics" , component:StaticsComponent } ,
   {path : "add_parking" , component:AddParkingComponent } ,
   {path : "parking_list" , component:ListParkingComponent }  ,
+  {path :"add_employer" , component:AddEmployerComponent }
  
 
 ]}
